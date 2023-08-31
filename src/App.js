@@ -1,7 +1,17 @@
+import Header from "./Header";
+import Main from "./Main";
 import "./App.css";
 
 function App() {
-  return <div>Quiz App</div>;
+  return (
+    <div className="app">
+      <Header />
+      <Main>
+        <p>1/15</p>
+        <p>Question</p>
+      </Main>
+    </div>
+  );
 }
 
 export default App;
