@@ -5,12 +5,13 @@ import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Question from "./Question";
-import "./App.css";
+import "../App.css";
 
 const initialState = {
   questions: [],
   //loading, error, ready, active or finished state of app
   status: "loading",
+  index: 0,
 };
 
 function reducer(state, action) {
@@ -37,9 +38,13 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+  const [{ questions, status, index }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
   const numQuestions = questions.length;
-  console.log(numQuestions);
+  //console.log(numQuestions);
+
   useEffect(function () {
     fetch("http://localhost:5001/questions")
       .then((res) => res.json())
@@ -55,7 +60,7 @@ function App() {
         {status === "ready" && (
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
-        {status === "active" && <Question />}
+        {status === "active" && <Question question={questions[index]} />}
       </Main>
     </div>
   );
