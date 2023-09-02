@@ -1,6 +1,6 @@
 import Options from "./Options";
 
-export default function Question({ question, dispatch, answer }) {
+function Question({ question, dispatch, answer }) {
   //console.log(question);
   return (
     <div>
@@ -9,3 +9,5 @@ export default function Question({ question, dispatch, answer }) {
     </div>
   );
 }
+
+export default Question;
